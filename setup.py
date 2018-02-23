@@ -15,7 +15,7 @@ import sys
 from setuptools import setup, find_packages
 
 NAME = "layint-scan-api"
-VERSION = "0.9.1"
+VERSION = "0.9.2"
 # To install the library, run the following
 #
 # python setup.py install
