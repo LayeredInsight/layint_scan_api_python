@@ -31,6 +31,14 @@ class TestRegistryApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_add_ecr_creds(self):
+        """
+        Test case for add_ecr_creds
+
+        Add credentials for AWS ECR
+        """
+        pass
+
     def test_add_registry(self):
         """
         Test case for add_registry

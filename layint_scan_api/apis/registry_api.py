@@ -40,6 +40,110 @@ class RegistryApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
+    def add_ecr_creds(self, ecr_credentials, **kwargs):
+        """
+        Add credentials for AWS ECR
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.add_ecr_creds(ecr_credentials, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param EcrCredentials ecr_credentials: (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.add_ecr_creds_with_http_info(ecr_credentials, **kwargs)
+        else:
+            (data) = self.add_ecr_creds_with_http_info(ecr_credentials, **kwargs)
+            return data
+
+    def add_ecr_creds_with_http_info(self, ecr_credentials, **kwargs):
+        """
+        Add credentials for AWS ECR
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.add_ecr_creds_with_http_info(ecr_credentials, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param EcrCredentials ecr_credentials: (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['ecr_credentials']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method add_ecr_creds" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'ecr_credentials' is set
+        if ('ecr_credentials' not in params) or (params['ecr_credentials'] is None):
+            raise ValueError("Missing the required parameter `ecr_credentials` when calling `add_ecr_creds`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'ecr_credentials' in params:
+            body_params = params['ecr_credentials']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['ApiKey']
+
+        return self.api_client.call_api('/EcrCreds', 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type=None,
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def add_registry(self, registry, **kwargs):
         """
         Add a new registry

@@ -26,6 +26,7 @@ from .cve_search import CveSearch
 from .cve_search_data import CveSearchData
 from .cve_search_field import CveSearchField
 from .cve_search_image import CveSearchImage
+from .ecr_credentials import EcrCredentials
 from .image import Image
 from .image_name import ImageName
 from .image_ref import ImageRef

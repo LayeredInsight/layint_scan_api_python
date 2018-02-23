@@ -326,7 +326,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_images**
-> Images get_images(tags=tags)
+> Images get_images(tags=tags, page_size=page_size)
 
 Get list of scanned images
 
@@ -346,10 +346,11 @@ layint_scan_api.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = layint_scan_api.ImagesApi()
 tags = layint_scan_api.TagNames() # TagNames | Tag name(s) to filter results (optional)
+page_size = 10 # int | Number of records to display per page (optional) (default to 10)
 
 try: 
     # Get list of scanned images
-    api_response = api_instance.get_images(tags=tags)
+    api_response = api_instance.get_images(tags=tags, page_size=page_size)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ImagesApi->get_images: %s\n" % e)
@@ -360,6 +361,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tags** | [**TagNames**](TagNames.md)| Tag name(s) to filter results | [optional] 
+ **page_size** | **int**| Number of records to display per page | [optional] [default to 10]
 
 ### Return type
 

@@ -4,12 +4,63 @@ All URIs are relative to *https://scan-api.layeredinsight.com/V0.0.1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**add_ecr_creds**](RegistryApi.md#add_ecr_creds) | **POST** /EcrCreds | Add credentials for AWS ECR
 [**add_registry**](RegistryApi.md#add_registry) | **POST** /Registry | Add a new registry
 [**delete_registry**](RegistryApi.md#delete_registry) | **DELETE** /Registry/{registryId} | Deletes a registry
 [**get_registries**](RegistryApi.md#get_registries) | **GET** /Registry | List all registries available to the user
 [**get_registry_by_id**](RegistryApi.md#get_registry_by_id) | **GET** /Registry/{registryId} | Find registry by ID
 [**update_registry**](RegistryApi.md#update_registry) | **POST** /Registry/{registryId} | Updates a registry with form data
 
+
+# **add_ecr_creds**
+> add_ecr_creds(ecr_credentials)
+
+Add credentials for AWS ECR
+
+### Example 
+```python
+from __future__ import print_function
+import time
+import layint_scan_api
+from layint_scan_api.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: ApiKey
+layint_scan_api.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# layint_scan_api.configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = layint_scan_api.RegistryApi()
+ecr_credentials = layint_scan_api.EcrCredentials() # EcrCredentials | 
+
+try: 
+    # Add credentials for AWS ECR
+    api_instance.add_ecr_creds(ecr_credentials)
+except ApiException as e:
+    print("Exception when calling RegistryApi->add_ecr_creds: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ecr_credentials** | [**EcrCredentials**](EcrCredentials.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **add_registry**
 > Registry add_registry(registry)

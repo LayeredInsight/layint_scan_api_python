@@ -677,6 +677,7 @@ class ImagesApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param TagNames tags: Tag name(s) to filter results
+        :param int page_size: Number of records to display per page
         :return: Images
                  If the method is called asynchronously,
                  returns the request thread.
@@ -702,12 +703,13 @@ class ImagesApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param TagNames tags: Tag name(s) to filter results
+        :param int page_size: Number of records to display per page
         :return: Images
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['tags']
+        all_params = ['tags', 'page_size']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -729,6 +731,8 @@ class ImagesApi(object):
         path_params = {}
 
         query_params = []
+        if 'page_size' in params:
+            query_params.append(('PageSize', params['page_size']))
 
         header_params = {}
 
