@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **date_created** | **str** | Timestamp representing date scan was run | [optional] 
 **date_updated** | **str** | Timestamp representing date this record was updated | [optional] 
 **status** | **str** | Status of scan | [optional] 
-**events** | [**list[ERRORUNKNOWN]**](.md) | Log of events that occurred (or are occurring) during scan | [optional] 
+**events** | **list[str]** | Log of events that occurred (or are occurring) during scan | [optional] 
 **clair** | [**list[ClairData]**](ClairData.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

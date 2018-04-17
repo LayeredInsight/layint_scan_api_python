@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **sid** | **str** | ID for this rule | [optional] 
-**parent_sid** | **str** | ID of owner of this rule | [optional] 
+**user_sid** | **str** | ID of owner of this rule | [optional] 
 **uri** | **str** |  | [optional] 
 **date_created** | **str** | Timestamp representing date scan was run | [optional] 
 **date_updated** | **str** | Timestamp representing date this record was updated | [optional] 

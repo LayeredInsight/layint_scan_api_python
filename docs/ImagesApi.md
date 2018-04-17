@@ -5,9 +5,13 @@ All URIs are relative to *https://scan-api.layeredinsight.com/V0.0.1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**add_image**](ImagesApi.md#add_image) | **POST** /Images | Submit an image name for scanning
+[**add_image_tags**](ImagesApi.md#add_image_tags) | **POST** /Images/{imageID} | Add tags to image
 [**delete_image**](ImagesApi.md#delete_image) | **DELETE** /Images/{imageID} | Delete specified image
 [**get_image**](ImagesApi.md#get_image) | **GET** /Images/{imageID} | Get image details
 [**get_image_compliance**](ImagesApi.md#get_image_compliance) | **GET** /Images/{imageID}/Compliance | Get compliance report for specified image
+[**get_image_licenses**](ImagesApi.md#get_image_licenses) | **GET** /Images/{imageID}/Licenses | Find software licenses for the components making up the image
+[**get_image_log**](ImagesApi.md#get_image_log) | **GET** /Images/{imageID}/Logs/{logID} | Get a log for an image
+[**get_image_logs**](ImagesApi.md#get_image_logs) | **GET** /Images/{imageID}/Logs | Get logs for an image
 [**get_image_scan**](ImagesApi.md#get_image_scan) | **GET** /Images/{imageID}/Scans/{scanID} | Get scan data for specific scan for specified image
 [**get_image_scans**](ImagesApi.md#get_image_scans) | **GET** /Images/{imageID}/Scans | Get all scan data for specified image
 [**get_images**](ImagesApi.md#get_images) | **GET** /Images | Get list of scanned images
@@ -53,6 +57,58 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Image**](Image.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **add_image_tags**
+> add_image_tags(image_id, tag_i_ds)
+
+Add tags to image
+
+### Example 
+```python
+from __future__ import print_function
+import time
+import layint_scan_api
+from layint_scan_api.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: ApiKey
+layint_scan_api.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# layint_scan_api.configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = layint_scan_api.ImagesApi()
+image_id = 'image_id_example' # str | ImageID to tag
+tag_i_ds = layint_scan_api.TagIDs() # TagIDs | Tag IDs to be applied to image
+
+try: 
+    # Add tags to image
+    api_instance.add_image_tags(image_id, tag_i_ds)
+except ApiException as e:
+    print("Exception when calling ImagesApi->add_image_tags: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **image_id** | **str**| ImageID to tag | 
+ **tag_i_ds** | [**TagIDs**](TagIDs.md)| Tag IDs to be applied to image | 
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 
@@ -186,7 +242,7 @@ layint_scan_api.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = layint_scan_api.ImagesApi()
-image_id = 'image_id_example' # str | ImageID to get license data for
+image_id = 'image_id_example' # str | ImageID to get compliance data for
 run = false # bool | If true, requests running compliance policies specified in \"policies\" parameter (optional) (default to false)
 policies = 'policies_example' # str | Comma-separated list of compliance policies to run for this image (optional)
 
@@ -202,13 +258,168 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **image_id** | **str**| ImageID to get license data for | 
+ **image_id** | **str**| ImageID to get compliance data for | 
  **run** | **bool**| If true, requests running compliance policies specified in \&quot;policies\&quot; parameter | [optional] [default to false]
  **policies** | **str**| Comma-separated list of compliance policies to run for this image | [optional] 
 
 ### Return type
 
 [**Compliances**](Compliances.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_image_licenses**
+> list[InlineResponse200] get_image_licenses(image_id)
+
+Find software licenses for the components making up the image
+
+### Example 
+```python
+from __future__ import print_function
+import time
+import layint_scan_api
+from layint_scan_api.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: ApiKey
+layint_scan_api.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# layint_scan_api.configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = layint_scan_api.ImagesApi()
+image_id = 'image_id_example' # str | 
+
+try: 
+    # Find software licenses for the components making up the image
+    api_response = api_instance.get_image_licenses(image_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ImagesApi->get_image_licenses: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **image_id** | **str**|  | 
+
+### Return type
+
+[**list[InlineResponse200]**](InlineResponse200.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_image_log**
+> ImageLog get_image_log(image_id, log_id)
+
+Get a log for an image
+
+### Example 
+```python
+from __future__ import print_function
+import time
+import layint_scan_api
+from layint_scan_api.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: ApiKey
+layint_scan_api.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# layint_scan_api.configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = layint_scan_api.ImagesApi()
+image_id = 'image_id_example' # str | 
+log_id = 'log_id_example' # str | 
+
+try: 
+    # Get a log for an image
+    api_response = api_instance.get_image_log(image_id, log_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ImagesApi->get_image_log: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **image_id** | **str**|  | 
+ **log_id** | **str**|  | 
+
+### Return type
+
+[**ImageLog**](ImageLog.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_image_logs**
+> ImageLogs get_image_logs(image_id)
+
+Get logs for an image
+
+### Example 
+```python
+from __future__ import print_function
+import time
+import layint_scan_api
+from layint_scan_api.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: ApiKey
+layint_scan_api.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# layint_scan_api.configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = layint_scan_api.ImagesApi()
+image_id = 'image_id_example' # str | 
+
+try: 
+    # Get logs for an image
+    api_response = api_instance.get_image_logs(image_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ImagesApi->get_image_logs: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **image_id** | **str**|  | 
+
+### Return type
+
+[**ImageLogs**](ImageLogs.md)
 
 ### Authorization
 
