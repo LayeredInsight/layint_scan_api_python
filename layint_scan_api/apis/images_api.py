@@ -530,12 +530,12 @@ class ImagesApi(object):
             path_params['imageID'] = params['image_id']
 
         query_params = []
+        if 'run' in params:
+            query_params.append(('run', params['run']))
         if 'policies' in params:
             query_params.append(('policies', params['policies']))
 
         header_params = {}
-        if 'run' in params:
-            header_params['run'] = params['run']
 
         form_params = []
         local_var_files = {}
